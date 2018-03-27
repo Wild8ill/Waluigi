@@ -52,7 +52,7 @@ def verify_tweets(tweets,whitelist,blacklist,users):
         #setup waluigi sayings
         walmod = ["WALUIGI NUMBER ONEEEE!!","WAH!","Wahahaha! Waluigi, number one!","Waluigi win!","Wah hah hah waah!","Waluigi time!"]
         #setup list of chat users
-        chatarray = ["116316890","362310023"]
+        chatarray = ["REDACTED"]
         if state == True and userstatus == True:
             textmessage = walmod[randint(0,len(walmod)-1)] +"\n" + tweet.text
             #print(textmessage)
@@ -61,10 +61,10 @@ def verify_tweets(tweets,whitelist,blacklist,users):
 
 
 # Twitter API credentials
-consumer_key = "DKOBiAlAjh4sgY5hDBG5OPzaw"
-consumer_secret = "06scs6qbdMiC59jrZjh0QQWvORk13GfjmG1oOynlKH8rQgi6d4"
-access_key = "824601276008824832-joWX7uQvzrtNuApgCqpSsuWmZYYUfbr"
-access_secret = "D3fSPwl5R2zajTMGJwEaZlEiGTBlfiYEopPDDcEFv20bm"
+consumer_key = "REDACTED"
+consumer_secret = "REDACTED"
+access_key = "REDACTED"
+access_secret = "REDACTED"
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_key, access_secret)
@@ -73,8 +73,8 @@ api = tweepy.API(auth, wait_on_rate_limit=True)
 
 # Initialising a telegram bot
 
-wal_bot = telegram.Bot("525936993:AAE2kAewRQJ8nxtFEuijlTOc7uoswhNnILs")
-updater = Updater("525936993:AAE2kAewRQJ8nxtFEuijlTOc7uoswhNnILs")
+wal_bot = telegram.Bot("REDACTED")
+updater = Updater("REDACTED")
 dispatcher = updater.dispatcher
 print(wal_bot.get_me())
 
@@ -103,6 +103,6 @@ with open("recenttweet.txt", "w") as f:
 
 # Runs functions
 
-whitelist += scrape_wishlist("Wild8ill")
+whitelist += scrape_wishlist("YOUR USERNAME")
 verify_tweets(public_tweets,whitelist,blacklist,verified_users)
 
