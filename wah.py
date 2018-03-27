@@ -55,9 +55,23 @@ def verify_tweets(tweets,whitelist,blacklist,users):
         chatarray = ["REDACTED"]
         if state == True and userstatus == True:
             textmessage = walmod[randint(0,len(walmod)-1)] +"\n" + tweet.text
-            #print(textmessage)
-            for each in chatarray:
-                    wal_bot.send_message(chat_id=each, text=textmessage)
+            final_check = message_intersection(stored_messages,textmessage)
+            stored_messages.append(textmessage)
+            if final_check:
+                for each in chatarray:
+                        wal_bot.send_message(chat_id=each, text=textmessage)
+
+def message_intersection(list_of_confirmed_messages,message_to_check): #helps prevent against duplicate deals, with a 70% level of significance
+    check_set = set(message_to_check.split())
+    for each_message in list_of_confirmed_messages:
+        conf_set = set(each_message.split())
+        crossover = check_set.intersection(conf_set)
+        percent_sig = (len(crossover)/len(conf_set)*100)
+        print("Percent Significance :"+str(percent_sig))
+        if percent_sig < 70:
+            return True
+        else:
+            return False
 
 
 # Twitter API credentials
