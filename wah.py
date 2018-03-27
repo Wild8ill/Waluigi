@@ -15,7 +15,7 @@ def scrape_wishlist(username):
     print(url)
     r = requests.get(url)
     soup = BeautifulSoup(r.text,'html.parser')
-    wishlist_games = ["free"]
+    wishlist_games = []
     for link in soup.find_all('script'):
         if "g_rgAppInfo" in link.text:
             array_of_vars = link.text.splitlines()
@@ -80,7 +80,7 @@ print(wal_bot.get_me())
 
 # Creates and initialises the required whitelist, blacklist, and verified_users variables
 
-whitelist = ["destiny","cuphead","zelda","star wars","sonic","xenoblade"]
+whitelist = ["free","destiny","cuphead","zelda","star wars","sonic","xenoblade"]
 blacklist = ["us psn","best buy","ios"]
 verified_users = ["Wario64","videogamedeals"]
 
