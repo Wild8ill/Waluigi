@@ -80,8 +80,8 @@ print(wal_bot.get_me())
 
 # Creates and initialises the required whitelist, blacklist, and verified_users variables
 
-whitelist = ["free","destiny","cuphead","zelda","star wars","sonic","xenoblade"]
-blacklist = ["us psn","best buy"]
+whitelist = ["destiny","cuphead","zelda","star wars","sonic","xenoblade"]
+blacklist = ["us psn","best buy","ios"]
 verified_users = ["Wario64","videogamedeals"]
 
 
