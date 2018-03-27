@@ -28,7 +28,7 @@ Heads up, this project is python3 only so make sure to use pip for python3.(This
 
 And finally,
 
-[Python Telegram Bot] (https://pypi.python.org/pypi/python-telegram-bot) Takes all the hard work out of this for you.
+[Python Telegram Bot](https://pypi.python.org/pypi/python-telegram-bot) Takes all the hard work out of this for you.
 
 Can I contribute?
 -----
