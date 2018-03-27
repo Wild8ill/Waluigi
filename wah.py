@@ -92,7 +92,7 @@ with open("recenttweet.txt", "r") as f:
             
 public_tweets = api.home_timeline(read_data) # Gets all new tweets from timeline
 
-if public_tweets == []: # Gf there are no new ones exits the program
+if public_tweets == []: # If there are no new ones exits the program
     print("No new tweets")
     exit(0)
 
