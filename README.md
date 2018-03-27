@@ -12,7 +12,7 @@ Want to have a go?
 
 At the present moment in time, WaluigiBot is only running for a select group of people, however I plan to open it up in the future. For updates on that however, you can initiate a conversation with the bot [here](https://t.me/WaluigiBot)
 
-Don't Want to wait??
+Don't want to wait??
 -----
 You can cr
 eate your own spinoff of this bot. All you'll need to get started are a [Twitter API key](https://developer.twitter.com/), a [Telegram bot of your own](https://telegram.org/blog/bot-revolution), and a bit of common sense. Oh, and these dependencies.
