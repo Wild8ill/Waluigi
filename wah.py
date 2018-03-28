@@ -45,6 +45,7 @@ def verify_tweets(tweets,whitelist,blacklist,users):
         for each_word in blacklist:
             if each_word in tweet_text:
                 state = False
+        userstatus = False
         for each_user in users:
             if each_user == tweet.user.name:
                 userstatus = True
