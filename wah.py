@@ -55,8 +55,8 @@ def verify_tweets(tweets,whitelist,blacklist,users):
         chatarray = ["REDACTED"]
         if state == True and userstatus == True:
             textmessage = walmod[randint(0,len(walmod)-1)] +"\n" + tweet.text
-            final_check = message_intersection(stored_messages,textmessage)
-            stored_messages.append(textmessage)
+            final_check = message_intersection(stored_messages,tweet.text)
+            stored_messages.append(tweet.text)
             if final_check:
                 for each in chatarray:
                         wal_bot.send_message(chat_id=each, text=textmessage)
