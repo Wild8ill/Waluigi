@@ -33,40 +33,42 @@ def scrape_wishlist(username):
     return wishlist_games
 
 def verify_tweets(tweets,whitelist,blacklist,users):
-
     for tweet in tweets:
         tweet_text = tweet.text.lower()
-        print(tweet_text)
-        state = False
+        state = "False"
         for each_word in whitelist:
             if each_word in tweet_text:
-                print(each_word)
-                state = True
+                state = "True"
         for each_word in blacklist:
             if each_word in tweet_text:
-                state = False
-        userstatus = False
+                state = "False"
+        userstatus = "False"
         for each_user in users:
             if each_user == tweet.user.name:
-                userstatus = True
+                userstatus = "True"
                 break
         #setup waluigi sayings
         walmod = ["WALUIGI NUMBER ONEEEE!!","WAH!","Wahahaha! Waluigi, number one!","Waluigi win!","Wah hah hah waah!","Waluigi time!"]
         #setup list of chat users
         chatarray = ["REDACTED"]
-        if state == True and userstatus == True:
+        if state == "True" and userstatus == "True":
             textmessage = walmod[randint(0,len(walmod)-1)] +"\n" + tweet.text
+            global stored_messages
             final_check = message_intersection(stored_messages,tweet.text)
             stored_messages.append(tweet.text)
+            print(stored_messages)
             if final_check:
                 for each in chatarray:
                         wal_bot.send_message(chat_id=each, text=textmessage)
 
-def message_intersection(list_of_confirmed_messages,message_to_check): #helps prevent against duplicate deals, with a 70% level of significance
+def message_intersection(list_of_confirmed_messages,message_to_check):
     check_set = set(message_to_check.split())
     for each_message in list_of_confirmed_messages:
         conf_set = set(each_message.split())
         crossover = check_set.intersection(conf_set)
+        if crossover == set():
+            print("Percent Significance : 0%")
+            return True
         percent_sig = (len(crossover)/len(conf_set)*100)
         print("Percent Significance :"+str(percent_sig))
         if percent_sig < 70:
@@ -96,9 +98,9 @@ print(wal_bot.get_me())
 # Creates and initialises the required whitelist, blacklist, and verified_users variables
 
 whitelist = ["free","destiny","cuphead","zelda","star wars","sonic","xenoblade"]
-blacklist = ["us psn","best buy","ios"]
-verified_users = ["Wario64","videogamedeals"]
-
+blacklist = ["us psn","best buy"]
+verified_users = ["Wario64","Cheap Ass Gamer"]
+stored_messages = [" "]
 
 # Gets last checked tweet id to stop spam
 
@@ -107,7 +109,7 @@ with open("recenttweet.txt", "r") as f:
             
 public_tweets = api.home_timeline(read_data) # Gets all new tweets from timeline
 
-if public_tweets == []: # If there are no new ones exits the program
+if public_tweets == []: # Gf there are no new ones exits the program
     print("No new tweets")
     exit(0)
 
