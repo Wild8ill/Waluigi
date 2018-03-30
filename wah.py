@@ -61,8 +61,9 @@ def verify_tweets(tweets,whitelist,blacklist,users):
                 for each in chatarray:
                         wal_bot.send_message(chat_id=each, text=textmessage)
 
-def message_intersection(list_of_confirmed_messages,message_to_check):
+def message_intersection(list_of_confirmed_messages,message_to_check,word_to_check):
     check_set = set(message_to_check.split())
+    global stored_topics
     for each_message in list_of_confirmed_messages:
         conf_set = set(each_message.split())
         crossover = check_set.intersection(conf_set)
@@ -71,10 +72,13 @@ def message_intersection(list_of_confirmed_messages,message_to_check):
             return True
         percent_sig = (len(crossover)/len(conf_set)*100)
         print("Percent Significance :"+str(percent_sig))
-        if percent_sig < 70:
-            return True
-        else:
+        if percent_sig > 65:
             return False
+        else:
+            for each_word in stored_topics:
+                if each_word == word_to_check:
+                    return False
+            return True
 
 
 # Twitter API credentials
@@ -100,7 +104,9 @@ print(wal_bot.get_me())
 whitelist = ["free","destiny","cuphead","zelda","star wars","sonic","xenoblade"]
 blacklist = ["us psn","best buy"]
 verified_users = ["Wario64","Cheap Ass Gamer"]
-stored_messages = [" "]
+stored_messages = [""]
+stored_topics = [""]
+
 
 # Gets last checked tweet id to stop spam
 
