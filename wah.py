@@ -102,7 +102,7 @@ print(wal_bot.get_me())
 # Creates and initialises the required whitelist, blacklist, and verified_users variables
 
 whitelist = ["free","destiny","cuphead","zelda","star wars","sonic","xenoblade"]
-blacklist = ["us psn","best buy"]
+blacklist = ["us psn","best buy","free shipping"]
 verified_users = ["Wario64","Cheap Ass Gamer"]
 stored_messages = [""]
 stored_topics = [""]
