@@ -32,6 +32,7 @@ def scrape_wishlist(username):
                         wishlist_games.append(name_of_the_game)
     return wishlist_games
 
+
 def verify_tweets(tweets,whitelist,blacklist,users):
     for tweet in tweets:
         tweet_text = tweet.text.lower()
@@ -39,6 +40,9 @@ def verify_tweets(tweets,whitelist,blacklist,users):
         for each_word in whitelist:
             if each_word in tweet_text:
                 state = "True"
+                matched_word = each_word
+                print(tweet_text)
+                print(matched_word)
         for each_word in blacklist:
             if each_word in tweet_text:
                 state = "False"
@@ -50,16 +54,20 @@ def verify_tweets(tweets,whitelist,blacklist,users):
         #setup waluigi sayings
         walmod = ["WALUIGI NUMBER ONEEEE!!","WAH!","Wahahaha! Waluigi, number one!","Waluigi win!","Wah hah hah waah!","Waluigi time!"]
         #setup list of chat users
-        chatarray = ["REDACTED"]
+        chatarray = []
+        with open("userids.txt", "r") as f:
+            for line in f:
+                chatarray.append(line)
         if state == "True" and userstatus == "True":
             textmessage = walmod[randint(0,len(walmod)-1)] +"\n" + tweet.text
             global stored_messages
-            final_check = message_intersection(stored_messages,tweet.text)
+            global stored_topics
+            final_check = message_intersection(stored_messages,tweet.text,matched_word)
             stored_messages.append(tweet.text)
-            print(stored_messages)
+            stored_topics.append(matched_word)
             if final_check:
                 for each in chatarray:
-                        wal_bot.send_message(chat_id=each, text=textmessage)
+                        wal_bot.send_message(chat_id=each.rstrip(), text=textmessage)
 
 def message_intersection(list_of_confirmed_messages,message_to_check,word_to_check):
     check_set = set(message_to_check.split())
@@ -101,12 +109,11 @@ print(wal_bot.get_me())
 
 # Creates and initialises the required whitelist, blacklist, and verified_users variables
 
-whitelist = ["free","destiny","cuphead","zelda","star wars","sonic","xenoblade"]
-blacklist = ["us psn","best buy","free shipping"]
+whitelist = [" free ","destiny","cuphead","zelda","star wars","sonic","xenoblade"]
+blacklist = ["us psn","best buy","free shipping","X1"]
 verified_users = ["Wario64","Cheap Ass Gamer"]
 stored_messages = [""]
 stored_topics = [""]
-
 
 # Gets last checked tweet id to stop spam
 
@@ -126,6 +133,6 @@ with open("recenttweet.txt", "w") as f:
 
 # Runs functions
 
-whitelist += scrape_wishlist("REDACTED")
+whitelist += scrape_wishlist("Wild8ill")
 verify_tweets(public_tweets,whitelist,blacklist,verified_users)
 
