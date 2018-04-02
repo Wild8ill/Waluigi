@@ -10,12 +10,11 @@ All you need to get started is a Twitter API key and a desire for free games!
 Want to have a go?
 -----
 
-At the present moment in time, WaluigiBot is only running for a select group of people, however I plan to open it up in the future. For updates on that however, you can initiate a conversation with the bot [here](https://t.me/WaluigiBot)
+WaluigiBot is up and running! Head on over to [Telegram](https://t.me/WaluigiBot) and type /start and wait for the deals to roll in!
 
-Don't want to wait??
+Want to create your own version?
 -----
-You can cr
-eate your own spinoff of this bot. All you'll need to get started are a [Twitter API key](https://developer.twitter.com/), a [Telegram bot of your own](https://telegram.org/blog/bot-revolution), and a bit of common sense. Oh, and these dependencies.
+You can create your own spinoff of this bot. All you'll need to get started are a [Twitter API key](https://developer.twitter.com/), a [Telegram bot of your own](https://telegram.org/blog/bot-revolution), and a bit of common sense. Oh, and these dependencies.
 
 Dependencies
 -----
