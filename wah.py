@@ -66,8 +66,12 @@ def verify_tweets(tweets,whitelist,blacklist,users):
             stored_messages.append(tweet.text)
             stored_topics.append(matched_word)
             if final_check:
-                for each in chatarray:
-                        wal_bot.send_message(chat_id=each.rstrip(), text=textmessage)
+                for user in chatarray:
+                    try:
+                        wal_bot.send_message(chat_id=user.rstrip(), text=textmessage)
+                    except:
+                        print(user)
+
 
 def message_intersection(list_of_confirmed_messages,message_to_check,word_to_check):
     check_set = set(message_to_check.split())
